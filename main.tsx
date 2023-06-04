@@ -1,6 +1,6 @@
 /** @jsx h */
 
-import blog from "https://deno.land/x/blog@0.6.0/blog.tsx";
+import blog from "https://deno.land/x/blog@0.6.1/blog.tsx";
 
 blog({
   title: "Ayushman Chhabra",
