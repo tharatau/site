@@ -13,18 +13,16 @@ const text: string = `
     Software Developer.\n`;
 
 if (root !== null) {
-    let i = 0;
+  let i = 0;
 
-    setInterval(() => {
-        if (i < text.length) {
+  setInterval(() => {
+    if (i < text.length) {
+      if (text[i] === "\n") {
+        document.getElementById("root").innerHTML += "<br>";
+      }
 
-            if (text[i] === "\n") {
-                document.getElementById("root").innerHTML += "<br>";
-            }
-
-            document.getElementById("root").innerHTML += text[i];
-            i++;
-        }
-    }, 150);
-
+      document.getElementById("root").innerHTML += text[i];
+      i++;
+    }
+  }, 150);
 }
