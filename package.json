@@ -1,0 +1,12 @@
+{
+  "name": "site",
+  "scripts": {
+    "start": "esbuild src/index.tsx --bundle --target=es2022 --outfile=src/index.js --watch --servedir=src",
+    "bld": "esbuild src/index.tsx --bundle --minify --target=es2022 --outfile=src/index.js",
+    "ghp": "gh-pages -d src -b daily"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.4",
+    "gh-pages": "^5.0.0"
+  }
+}
