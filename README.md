@@ -1,5 +1,9 @@
-## Site
+# Site
 
-## Credits
+Tech:
 
-https://css-tricks.com/how-to-create-neon-text-with-css/
+- CSS
+- HTML
+- JavaScript
+- Markdown
+
