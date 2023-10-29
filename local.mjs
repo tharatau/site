@@ -44,7 +44,8 @@ function parse(content, css) {
 
 function build() {
 	const articles = [
-		"2022-08-09"
+		"2022-08-09",
+		"index"
 	];
 
 	const css = fs.readFileSync('./local.css').toString();
