@@ -49,7 +49,7 @@ function build() {
 
 	const css = fs.readFileSync('./local.css').toString();
 	for (const article of articles) {
-		const article_md = fs.readFileSync(`${article}.md`).toString();
+		const article_md = fs.readFileSync(`./content/${article}.md`).toString();
 		const article_html = parse(article_md, css);
 		const html = `
 		<html>
@@ -63,7 +63,8 @@ function build() {
 		</html>
 		`;
 
-		fs.writeFileSync(`${article}.html`, html);
+		fs.mkdirSync('./static');
+		fs.writeFileSync(`./static/${article}.html`, html);
 	}
 }
 
