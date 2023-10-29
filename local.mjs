@@ -64,7 +64,10 @@ function build() {
 		</html>
 		`;
 
-		fs.mkdirSync('./static');
+		if (fs.existsSync('./static') === false) {
+			fs.mkdirSync('./static');
+	
+		}	
 		fs.writeFileSync(`./static/${article}.html`, html);
 	}
 }
