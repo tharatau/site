@@ -7,7 +7,7 @@ on:
     branches: ['*']
 
 jobs:
-  doc:
+  build:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -16,9 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 21
+      - name: Static build
+        run: node local.mjs build
       - name: Deploy using gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npx gh-pages -d *.html -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d ./*.html -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
