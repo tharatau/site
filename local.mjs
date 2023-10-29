@@ -1,8 +1,17 @@
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
+import process from 'node:process';
 
-export function parse(content, css) {
+if (process.argv[2] === undefined) {
+	console.log('Usage: node local.mjs [build|serve]')
+} else if (process.argv[2] === "build") {
+	build();
+} else if (process.argv[2] === "serve") {
+	serve();
+}
+
+function parse(content, css) {
 	let article_arr = [];
 	let article_str = '';
 	let article_title = '';
@@ -33,31 +42,56 @@ export function parse(content, css) {
 	return article_str;
 }
 
-const server = http.createServer({}, (req, res) => {
-	let file_path = '.' + req.url;
-	if (file_path === './') {
-		file_path = './2022-08-09.md';
-	}
+function build() {
+	const articles = [
+		"2022-08-09"
+	];
 
 	const css = fs.readFileSync('./local.css').toString();
+	for (const article of articles) {
+		const article_md = fs.readFileSync(`${article}.md`).toString();
+		const article_html = parse(article_md, css);
+		const html = `
+		<html>
+			<head>
+				<title>Ayushman Chhabra</title>
+			</head>
+		
+			<body>
+				${article_html}
+			</body>
+		</html>
+		`;
 
-	fs.readFile(file_path, (error, content) => {
-		if (error) {
-			if (error.code === 'ENOENT') {
-				res.writeHead(404, { 'Content-Type': 'text/html' });
-				res.end('404 Not Found');
-			} else {
-				res.writeHead(500, { 'Content-Type': 'text/html' });
-				res.end('500 Internal Server Error');
-			}
-		} else {
-			if (path.extname(file_path) === '.md') {
-				res.writeHead(200, { 'Content-Type': 'text/html' });
-				res.end(parse(content, css));
-			}
+		fs.writeFileSync(`${article}.html`, html);
+	}
+}
+
+function serve() {
+	const server = http.createServer({}, (req, res) => {
+		let file_path = '.' + req.url;
+		if (file_path === './') {
+			file_path = './2022-08-09.md';
 		}
+
+		fs.readFile(file_path, (error, content) => {
+			if (error) {
+				if (error.code === 'ENOENT') {
+					res.writeHead(404, { 'Content-Type': 'text/html' });
+					res.end('404 Not Found');
+				} else {
+					res.writeHead(500, { 'Content-Type': 'text/html' });
+					res.end('500 Internal Server Error');
+				}
+			} else {
+				if (path.extname(file_path) === '.md') {
+					const css = fs.readFileSync('./local.css').toString();
+					res.writeHead(200, { 'Content-Type': 'text/html' });
+					res.end(parse(content, css));
+				}
+			}
+		});
 	});
-});
 
-server.listen(4000, console.log('Server is running on port 4000'));
-
+	server.listen(4000, console.log('Server is running on port 4000'));
+}
