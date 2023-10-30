@@ -1,5 +1,5 @@
 # Changelog
 
-## 2023-10-29
+## 2023-10-30
 
-- MD: Add support `#` and regular text.
+- MD: Add support for `#` and plain text.
