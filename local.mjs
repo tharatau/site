@@ -70,6 +70,8 @@ function build() {
 		}	
 		fs.writeFileSync(`./docs/${article}.html`, html);
 	}
+
+	fs.writeFileSync('./docs/CNAME', 'ayushmanchhabra.com');
 }
 
 function serve() {
