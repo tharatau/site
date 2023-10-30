@@ -64,11 +64,11 @@ function build() {
 		</html>
 		`;
 
-		if (fs.existsSync('./static') === false) {
-			fs.mkdirSync('./static');
+		if (fs.existsSync('./docs') === false) {
+			fs.mkdirSync('./docs');
 	
 		}	
-		fs.writeFileSync(`./static/${article}.html`, html);
+		fs.writeFileSync(`./docs/${article}.html`, html);
 	}
 }
 
