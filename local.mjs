@@ -44,7 +44,6 @@ function parse(content, css) {
 
 function build() {
 	const articles = [
-		"2022-02-12",
 		"2022-08-09",
 		"index"
 	];
