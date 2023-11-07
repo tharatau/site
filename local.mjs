@@ -1,10 +1,10 @@
-import fs from 'node:fs';
-import { readFile } from 'node:fs/promises';
+import fsp from 'node:fs/promises';
 import http from 'node:http';
+import path from 'node:path';
 import process from 'node:process';
 
 if (process.argv[2] === undefined) {
-	console.log('Usage: node local.mjs [build|serve]')
+	console.info('Usage: node local.mjs [build|serve]')
 } else if (process.argv[2] === "build") {
 	build();
 } else if (process.argv[2] === "serve") {
@@ -36,39 +36,76 @@ function parse(content) {
     	${article_str}
 	</article>
     `;
-	return article_str;
+	return { article_title, article_str };
 }
 
-function build() {
-	const articles = [
-		"2022-08-09",
-		"2023-11-01",
-	];
+async function build() {
 
-	for (const article of articles) {
-		const article_md = fs.readFileSync(`./content/${article}.md`).toString();
-		const article_html = parse(article_md);
-		const html = `
+	let articles = [];
+
+	fsp.mkdir('./docs', {
+		recursive: true,
+	});
+
+	const content_dir = await fsp.readdir('./content');
+
+	for await (const file_path of content_dir) {
+		const buffer = await fsp.readFile(`./content/${file_path}`);
+		const { article_title, article_str } = parse(buffer.toString());
+		articles.push({
+			content: article_str,
+			date: path.basename(file_path, '.md'),
+			path: file_path,
+			title: article_title,
+		});
+
+		const htmlTemplate = `
 <html>
+	<head>
+		<title>${article_title}</title>
+		<link rel="stylesheet" href="./local.css" />
+	</head>
+				
+	<body>
+		${article_str}
+	</body>
+</html>`;
+
+		await fsp.writeFile(`./docs/${path.basename(file_path, '.md')}.html`, htmlTemplate);
+	}
+
+	articles.reverse();
+
+	await fsp.writeFile('./docs/CNAME', 'ayushmanchhabra.com');
+	await fsp.cp('./local.css', './docs/local.css');
+
+	let articlesTemplate = ``;
+
+	for await (const article of articles) {
+		articlesTemplate += `<br><p><a href="./${article.date}.html">${article.title}</a></p>\n`
+	}
+
+	let indexTemplate = `
+<html>
+
 	<head>
 		<title>Ayushman Chhabra</title>
 		<link rel="stylesheet" href="./local.css" />
 	</head>
-		
+	
 	<body>
-		${article_html}
+	
+		<article>
+			<h1>notes, essays, poems</h1><br/>
+${articlesTemplate}
+		</article>
 	</body>
-</html>`;
+	
+</html>
+	`;
 
-		if (fs.existsSync('./docs') === false) {
-			fs.mkdirSync('./docs');
-		}
-		fs.writeFileSync(`./docs/${article}.html`, html);
-	}
+	await fsp.writeFile('./docs/index.html', indexTemplate);
 
-	fs.writeFileSync('./docs/CNAME', 'ayushmanchhabra.com');
-	fs.cpSync('./local.css', './docs/local.css');
-	fs.cpSync('./local.html', './docs/index.html');
 }
 
 function serve() {
@@ -79,14 +116,14 @@ function serve() {
 		}
 
 		try {
-			const content = await readFile(file_path);
+			const content = await fsp.readFile(file_path);
 			res.writeHead(200, { 'Content-Type': 'text/html' });
 			res.end(content.toString());
 		} catch (error) {
 			res.writeHead(404, { 'Content-Type': 'text/html' });
-			res.end(error);
+			res.end(error.toString());
 		}
 	});
 
-	server.listen(4000, console.log('Server is running on port 4000'));
+	server.listen(4000, console.info('Server is running on port 4000'));
 }
