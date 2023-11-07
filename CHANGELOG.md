@@ -3,7 +3,7 @@
 ## v2023.11.08
 
 DEV: Parse article information (content, date, file_path, title) from `./content` directory.
-WEB: Caste `Error` object as string to prevent crash.
+WEB: Cast `Error` object as string to prevent crash.
 
 ## v2023.11.07
 
