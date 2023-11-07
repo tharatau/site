@@ -1,6 +1,6 @@
 import fs from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import http from 'node:http';
-import path from 'node:path';
 import process from 'node:process';
 
 if (process.argv[2] === undefined) {
@@ -11,7 +11,7 @@ if (process.argv[2] === undefined) {
 	serve();
 }
 
-function parse(content, css) {
+function parse(content) {
 	let article_arr = [];
 	let article_str = '';
 	let article_title = '';
@@ -31,13 +31,10 @@ function parse(content, css) {
 	}
 
 	article_str = `
-	<style>
-		${css}
-	</style>
-    <article>
-        <h1>${article_title}</h1>
-        ${article_str}
-    </article>
+	<article>
+    	<h1>${article_title}</h1>
+    	${article_str}
+	</article>
     `;
 	return article_str;
 }
@@ -45,59 +42,50 @@ function parse(content, css) {
 function build() {
 	const articles = [
 		"2022-08-09",
-		"index"
+		"2023-11-01",
 	];
 
-	const css = fs.readFileSync('./local.css').toString();
 	for (const article of articles) {
 		const article_md = fs.readFileSync(`./content/${article}.md`).toString();
-		const article_html = parse(article_md, css);
+		const article_html = parse(article_md);
 		const html = `
-		<html>
-			<head>
-				<title>Ayushman Chhabra</title>
-			</head>
+<html>
+	<head>
+		<title>Ayushman Chhabra</title>
+		<link rel="stylesheet" href="./local.css" />
+	</head>
 		
-			<body>
-				${article_html}
-			</body>
-		</html>
-		`;
+	<body>
+		${article_html}
+	</body>
+</html>`;
 
 		if (fs.existsSync('./docs') === false) {
 			fs.mkdirSync('./docs');
-	
-		}	
+		}
 		fs.writeFileSync(`./docs/${article}.html`, html);
 	}
 
 	fs.writeFileSync('./docs/CNAME', 'ayushmanchhabra.com');
+	fs.cpSync('./local.css', './docs/local.css');
+	fs.cpSync('./local.html', './docs/index.html');
 }
 
 function serve() {
-	const server = http.createServer({}, (req, res) => {
-		let file_path = '.' + req.url;
-		if (file_path === './') {
-			file_path = './2022-08-09.md';
+	const server = http.createServer({}, async (req, res) => {
+		let file_path = './docs' + req.url;
+		if (file_path === './docs/') {
+			file_path = './docs/index.html';
 		}
 
-		fs.readFile(file_path, (error, content) => {
-			if (error) {
-				if (error.code === 'ENOENT') {
-					res.writeHead(404, { 'Content-Type': 'text/html' });
-					res.end('404 Not Found');
-				} else {
-					res.writeHead(500, { 'Content-Type': 'text/html' });
-					res.end('500 Internal Server Error');
-				}
-			} else {
-				if (path.extname(file_path) === '.md') {
-					const css = fs.readFileSync('./local.css').toString();
-					res.writeHead(200, { 'Content-Type': 'text/html' });
-					res.end(parse(content, css));
-				}
-			}
-		});
+		try {
+			const content = await readFile(file_path);
+			res.writeHead(200, { 'Content-Type': 'text/html' });
+			res.end(content.toString());
+		} catch (error) {
+			res.writeHead(404, { 'Content-Type': 'text/html' });
+			res.end(error);
+		}
 	});
 
 	server.listen(4000, console.log('Server is running on port 4000'));

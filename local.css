@@ -8,8 +8,6 @@ body {
     height: 100vh;
     width: 100vw;
 
-    display: flex;
-
     background-color: whitesmoke;
     color: gray;
     font-size: 14px;
@@ -22,4 +20,14 @@ h1 {
 
 p {
     margin-left: 10px;
+}
+
+a,
+a:active,
+a:hover,
+a:link,
+a:visited {
+    background-color: whitesmoke;
+    color: gray;
+    text-decoration: underline;
 }
