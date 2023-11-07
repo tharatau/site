@@ -7,3 +7,7 @@ I was inspired by Johnathan Blow's [ideas](https://www.youtube.com/watch?v=ZSRHe
 - No third party modules.
 - If a feature is not used, do not try supporting it.
 - If a feature is no longer used/does not need to be used, remove it.
+
+## Constraints
+
+- Max 1 article per day.
