@@ -2,11 +2,23 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 	"os"
 	"strings"
 )
 
 func main() {
+	if os.Args[1] == "build" {
+		build()
+	} else if os.Args[1] == "serve" {
+		serve()
+	} else {
+		fmt.Println("Incorrect option.")
+	}
+}
+
+func build() {
 	files, err := os.ReadDir("./content")
 	if err != nil {
 		fmt.Println(err)
@@ -77,4 +89,16 @@ func main() {
 
 	os.WriteFile("./docs/local.css", css, 0755)
 
+}
+
+func serve() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/" {
+			http.ServeFile(w, r, "./docs/index.html")
+		} else {
+			http.ServeFile(w, r, "./docs/"+r.URL.Path)
+		}
+	})
+
+	log.Fatal(http.ListenAndServe(":4000", nil))
 }

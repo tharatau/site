@@ -1,10 +1,10 @@
 .PHONY: build clean serve
 
 build:
-	go run main.go
+	go run main.go build
 
 clean:
 	rm -rf docs
 
 serve:
-	node local.mjs serve
+	go run main.go serve
