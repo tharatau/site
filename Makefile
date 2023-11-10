@@ -1,7 +1,7 @@
 .PHONY: build clean serve
 
 build:
-	node local.mjs build
+	go run main.go
 
 clean:
 	rm -rf docs
