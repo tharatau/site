@@ -1,5 +1,10 @@
 # Changelog
 
+## v2023.11.09
+
+- DEV: Switch from Node to Go.
+- WEB: Switch from Node to Go.
+
 ## v2023.11.08
 
 - DEV: Parse article information (content, date, file_path, title) from `./content` directory.
