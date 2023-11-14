@@ -88,7 +88,7 @@ func build() {
 	}
 
 	os.WriteFile("./docs/local.css", css, 0755)
-
+	os.WriteFile("./docs/CNAME", []byte("ayushmanchhabra.com\n"), 0755)
 }
 
 func serve() {
