@@ -2,7 +2,9 @@
 
 ## v2023.12.29
 
-- WEB: Update `h1` font size to `24px` and `p` font size to `20px`. 
+- DEV: Run `make build` before `make serve`.
+- WEB: Update `h1` font size to `24px` and `p` font size to `20px`.
+- WEB: Remove `height` and `width` requirement from `body`. 
 
 ## v2023.11.09
 

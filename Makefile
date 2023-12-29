@@ -6,5 +6,5 @@ build:
 clean:
 	rm -rf docs
 
-serve:
+serve: build
 	go run main.go serve
