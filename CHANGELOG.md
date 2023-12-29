@@ -1,5 +1,9 @@
 # Changelog
 
+## v2023.12.29
+
+- WEB: Update `h1` font size to `24px` and `p` font size to `20px`. 
+
 ## v2023.11.09
 
 - DEV: Switch from Node to Go.
