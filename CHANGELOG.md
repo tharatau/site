@@ -1,5 +1,9 @@
 # Changelog
 
+## v2024.01.21
+
+- TXT: Migrate from Dropbox to Git.
+
 ## v2023.12.29
 
 - DEV: Run `make build` before `make serve`.
