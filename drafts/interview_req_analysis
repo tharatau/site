@@ -1,0 +1,13 @@
+What would you choose between creating a custom solution, which would be an engineering challenge for you and searching for an existing library, adopting it for the current requirements? Please elaborate on the reason why. (An example would be some edge case for internationalization functionality, but it's a hypothetical question, no need to look for specific libraries to solve it now)
+
+What is the expected cost of usage, expected cost of maintainance and is it a product or development dependency (DD)?
+
+Case 1: Assume there exists a library which fits my use case and let it be a product dependency.
+
+If the library is well maintained, then pull it in as a dependency and call it a day.
+
+If the library has not been maintained for some time, vendor it, use dependency injection to pull in specific functionality and use Synk or similar to reduce your security vulns.
+
+Case 2: Assume there does not exist a library for your specific use case (after _a lot_ of searching). If the cost of usage and maintainance is way lower than the future payoff/utility, then invest some time into it and start building it out.
+
+Example: https://github.com/thejoshwolfe/yauzl was the best unzipping library for Node. It has been unmaintained for years. So this guy took it upon himself to rewrite the library for modern standards and use cases - https://github.com/overlookmotel/yauzl-promise.
