@@ -1,0 +1,21 @@
+{
+  "name": "ayushmanchhabra",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Ayushman Chhabra",
+    "url": "https://ayushmanchhabra.com"
+  },
+  "engines": {
+    "node": "20.11.0"
+  },
+  "license": "MIT",
+  "packageManager": "npm@10.3.0",
+  "scripts": {
+    "dev": "serve ./"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
