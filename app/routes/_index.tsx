@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <div className="">
       <Menu />
-      <section className="grid grid-rows-2 lg:grid-cols-2 gap-2 m-4 flex items-center justify-center">
+      <section className="grid grid-rows-2 lg:grid-cols-2 gap-2 mx-16 flex items-center justify-center">
         <img
           alt="Profile"
           className="h-72 w-72 md:h-96 md:w-96 rounded-full m-5"
