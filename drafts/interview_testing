@@ -1,5 +1,0 @@
-- How would you go about testing?
-
-I have different approaches for bugs, features and refactoring. For bugs, I would try to come up with a failing test case. For features, I would write unit and integration tests first. Now I have a rough idea of what to work on. I would tweak the tests as and when necessary. I prefer fewer good quality tests rather than tests for the sake of improving code coverage.
-
-- What would you choose between creating a custom solution, which would be an engineering challenge for you and searching for an existing library, adopting it for the current requirements? Please elaborate on the reason why. (An example would be some edge case for internationalization functionality, but it's a hypothetical question, no need to look for specific libraries to solve it now)

@@ -1,5 +1,10 @@
 # Changelog
 
+## v2024.01.24
+
+- Migrate to [Remix](https://remix.run/) with [Tailwind CSS](https://tailwindcss.com/).
+- Redesign website to make it look simple but professional.
+
 ## v2024.01.21
 
 - TXT: Migrate from Dropbox to Git.
