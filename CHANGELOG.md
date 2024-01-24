@@ -2,8 +2,9 @@
 
 ## v2024.01.24
 
-- Migrate to [Remix](https://remix.run/) with [Tailwind CSS](https://tailwindcss.com/).
-- Redesign website to make it look simple but professional.
+- Migrate from HTML, CSS and Go to [Remix](https://remix.run/) with [Tailwind CSS](https://tailwindcss.com/) to improve development experience.
+- Used TailwindCSS to redesign website quickly making it look simple but professional.
+- Applied CSS Grid and Flexbox to make website responsive.
 
 ## v2024.01.21
 
