@@ -21,7 +21,7 @@ export default function Index() {
           <br /><br />
 
           <span className="text-3xl text-zinc-600">
-            I build highly <b>responsive</b>, <b>accessible</b> and <b>performant</b> websites.
+            I build <b>accessible</b>, <b>responsive</b> and <b>high performance</b> web applications.
           </span>
 
           <br /><br />
