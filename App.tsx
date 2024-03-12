@@ -16,7 +16,6 @@ export default function App() {
         <br />
         <ul>
           <li className='text-md'>Programmer based out of India.</li>
-          <li className='text-md'>Into music, literature and fitness.</li>
         </ul>
       </div>
 
