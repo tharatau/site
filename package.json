@@ -1,0 +1,19 @@
+{
+  "name": "ayushmanchhabra",
+  "private": true,
+  "description": "Ayushman Chhabra's blog",
+  "scripts": {
+    "lint": "",
+    "test": "",
+    "start": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "Ayushman Chhabra <ayushmxn@outlook.com>",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "typescript": "^5.5.2",
+    "vite": "^5.3.2",
+    "vsx": "^0.8.0"
+  }
+}
