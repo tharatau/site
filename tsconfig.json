@@ -13,7 +13,8 @@
         "isolatedModules": true,
         "strictNullChecks": true,
         "esModuleInterop": true,
-        "declaration": true
+        "declaration": true,
+        "resolveJsonModule": true
     },
     "exclude": [
         "node_modules"
