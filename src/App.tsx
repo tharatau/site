@@ -2,7 +2,7 @@ function App() {
 
   return (
     <div style={{ margin: 10 }}>
-      <h1>AYUSHMAN CHHABRA</h1>
+      <h1 data-testid='name'>AYUSHMAN CHHABRA</h1>
       <section style={{ paddingTop: 20 }}>
         <h3>Me in 10 seconds</h3><br />
         <p>Economics student turned software developer turned security analyst.</p>
