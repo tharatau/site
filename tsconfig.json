@@ -1,22 +1,7 @@
 {
-    "compilerOptions": {
-        "target": "ES2022",
-        "lib": [
-            "DOM",
-            "DOM.Iterable",
-            "ES2022"
-        ],
-        "jsx": "react",
-        "jsxFactory": "React.createElement",
-        "jsxFragmentFactory": "React.createFragment",
-        "moduleResolution": "node",
-        "isolatedModules": true,
-        "strictNullChecks": true,
-        "esModuleInterop": true,
-        "declaration": true,
-        "resolveJsonModule": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
