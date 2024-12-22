@@ -12,13 +12,13 @@ function App() {
 
       <section style={{ paddingTop: 20 }}>
         <h3>Projects</h3><br />
+        <p><a href="https://sharelist.xyz" rel="noopener noreferrer" target="_blank">Share List</a>: A web application to write content and save app state in URL.</p>
+        <p><a href="https://github.com/ayushmanchhabra/vsx" rel="noopener noreferrer" target="_blank">vsx</a>: A library to write vanilla JavaScript applications using JSX syntax without virtual DOM or Proxy magic.</p>
         <p><a href="https://github.com/ayushmanchhabra/kpmlibrary.com" rel="noopener noreferrer" target="_blank">Kamla Puri Memorial Library</a>: Co-founded a library (2011-2020).</p>
         <p><a href="https://github.com/ayushmanchhabra/asyncawake.studio" rel="noopener noreferrer" target="_blank">Async Awake Studio</a>: A place to share things related to coding, security and more.</p>
         <p><a href="https://github.com/ayushmanchhabra/chat" rel="noopener noreferrer" target="_blank">Chat</a>: A chat app with the goal of <i>actually</i> being secure. Run it on your home/office router, subnet or TLD.</p>
-        <p><a href="https://github.com/ayushmanchhabra/vsx" rel="noopener noreferrer" target="_blank">vsx</a>: A library to write vanilla JavaScript applications using JSX syntax without virtual DOM or Proxy magic.</p>
         <p><a href="https://github.com/ayushmanchhabra/double" rel="noopener noreferrer" target="_blank">double</a>: A program to learn AI from first principles.</p>
         <p><a href="https://github.com/ayushmanchhabra/surf" rel="noopener noreferrer" target="_blank">Surf</a>: A browser with the goal of inversion of control.</p>
-        <p><a href="https://github.com/ayushmanchhabra/sharelist.xyz" rel="noopener noreferrer" target="_blank">Share List</a>: A web application to write content and save app state in URL.</p>
       </section>
 
       <section style={{ paddingTop: 20 }}>
