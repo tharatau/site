@@ -12,7 +12,7 @@ function App() {
 
       <section style={{ paddingTop: 20 }}>
         <h3>Projects</h3><br />
-        <p><a href="https://sharelist.xyz" rel="noopener noreferrer" target="_blank">Share List</a>: A web application to write content and save app state in URL.</p>
+        <p><a href="https://sharelist.xyz" rel="noopener noreferrer" target="_blank">Share List</a>: A web application to share information by encoding and saving it in the URL hash.</p>
         <p><a href="https://github.com/ayushmanchhabra/vsx" rel="noopener noreferrer" target="_blank">vsx</a>: A library to write vanilla JavaScript applications using JSX syntax without virtual DOM or Proxy magic.</p>
         <p><a href="https://github.com/ayushmanchhabra/kpmlibrary.com" rel="noopener noreferrer" target="_blank">Kamla Puri Memorial Library</a>: Co-founded a library (2011-2020).</p>
         <p><a href="https://github.com/ayushmanchhabra/asyncawake.studio" rel="noopener noreferrer" target="_blank">Async Awake Studio</a>: A place to share things related to coding, security and more.</p>
